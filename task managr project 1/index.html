@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Collaboration Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <h1>TaskFlow</h1>
+            <p>Task Collaboration Tool</p>
+        </div>
+        <span class="workspace">Team Workspace</span>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <h2>Task Dashboard</h2>
+                <p>Organize work and keep your team on track.</p>
+            </div>
+            <button id="addTaskBtn" type="button">+ New Task</button>
+        </section>
+
+        <section class="stats">
+            <article class="stat-card">
+                <p>Total Tasks</p>
+                <h3 id="totalTasks">0</h3>
+            </article>
+            <article class="stat-card">
+                <p>To Do</p>
+                <h3 id="pendingTasks">0</h3>
+            </article>
+            <article class="stat-card">
+                <p>In Progress</p>
+                <h3 id="progressTasks">0</h3>
+            </article>
+            <article class="stat-card">
+                <p>Completed</p>
+                <h3 id="completedTasks">0</h3>
+            </article>
+        </section>
+
+        <section class="panel" id="formPanel" hidden>
+            <h2 id="formHeading">Create New Task</h2>
+
+            <form id="taskForm">
+                <input type="hidden" id="taskId">
+
+                <div class="field">
+                    <label for="title">Task title *</label>
+                    <input id="title" maxlength="200"
+                           placeholder="Example: Complete project report" required>
+                </div>
+
+                <div class="field">
+                    <label for="assignedTo">Assigned to</label>
+                    <input id="assignedTo" placeholder="Team member name">
+                </div>
+
+                <div class="field full">
+                    <label for="description">Description</label>
+                    <textarea id="description"
+                              placeholder="Enter task details"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="priority">Priority</label>
+                    <select id="priority">
+                        <option>Low</option>
+                        <option selected>Medium</option>
+                        <option>High</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option>To Do</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="dueDate">Due date</label>
+                    <input id="dueDate" type="date">
+                </div>
+
+                <div class="form-actions full">
+                    <button id="saveBtn" type="submit">Save Task</button>
+                    <button id="cancelBtn" class="secondary" type="button">
+                        Cancel
+                    </button>
+                </div>
+
+                <p id="formMessage" class="message full" role="status"></p>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="task-heading">
+                <div>
+                    <h2>Team Tasks</h2>
+                    <p>Review and manage your tasks.</p>
+                </div>
+                <input id="search" type="search" placeholder="Search tasks...">
+            </div>
+
+            <p id="pageMessage" class="message" role="status"></p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Assignee</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Due Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskList"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
